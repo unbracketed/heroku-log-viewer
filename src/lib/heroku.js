@@ -3,7 +3,6 @@ var https       = require('https');
 var split       = require('split');
 var SSE         = require('express-sse');
 
-
 module.exports = function(token) {
   var hk = heroku.createClient({ token: token });
   var serverEvent = new SSE();
@@ -14,6 +13,7 @@ module.exports = function(token) {
 
       hk.apps(app).logSessions().create({ tail: true }, function(err, logSession) {
         if (err) splitStream.emit('error', err);
+        console.log('ERR ', err)
 
         var logRequest = https.get(logSession.logplex_url);
 
