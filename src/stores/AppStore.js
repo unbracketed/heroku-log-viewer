@@ -8,7 +8,7 @@ class AppStore {
   constructor() {
     this.apps = []
     this.filteredApps = []
-    this.appFilter = null
+    this.appFilter = ''
 
     this.bindListeners({
       handleUpdateApps: AppActions.UPDATE_APPS,
@@ -18,7 +18,7 @@ class AppStore {
 
   handleUpdateApps(apps) {
     this.apps = apps
-    this.filteredApps = _.filter(this.apps, app => _.includes(app.name, this.appFilter))
+    this.filteredApps = _.filter(apps, app => _.includes(app.name, this.appFilter))
   }
 
   handleUpdateFilter(query) {

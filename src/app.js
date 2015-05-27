@@ -3,13 +3,13 @@ import request from 'superagent'
 import AltContainer from 'alt/AltContainer';
 import LogStore from './stores/LogStore'
 import AppStore from './stores/AppStore'
-import OrgStore from './stores/OrgStore'
+import GroupsStore from './stores/GroupsStore'
 import AppActions from './actions/AppActions'
-import OrgActions from './actions/OrgActions'
+import GroupsActions from './actions/GroupsActions'
 import LogList from './components/LogList'
 import Apps from './components/Apps'
 import AppFilter from './components/AppFilter'
-import Orgs from './components/Orgs'
+import Groups from './components/Groups'
 
 
 //get apps
@@ -28,9 +28,9 @@ request
 
 
 //get organizations
-const orgs = localStorage.getItem('organizations')
-if (orgs) {
-  OrgActions.updateOrgs(JSON.parse(orgs))
+const groups = localStorage.getItem('groups')
+if (groups) {
+  GroupsActions.updateGroups(JSON.parse(groups))
   //get groups
 }
 
@@ -40,12 +40,12 @@ React.render(
   (
   <div>
 
-    <AltContainer store={OrgStore}>
-      <Orgs/>
+    <AltContainer store={GroupsStore}>
+      <Groups/>
     </AltContainer>
 
-    <h2>All Apps</h2>
     <AltContainer store={AppStore}>
+      <h2>All Apps</h2>
       <AppFilter/>
       <Apps/>
     </AltContainer>
