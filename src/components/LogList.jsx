@@ -8,7 +8,8 @@ var LogList = React.createClass({
     const logs = this.props.logs
     return (
       <div>
-        {logs.slice(logs.length-50).map(log => <p>{log}</p>)}
+        {/* TODO use the log ID as key */}
+        {logs.slice(logs.length-50).map((log, i) => <p key={i}>{log}</p>)}
       </div>
     )
   }
