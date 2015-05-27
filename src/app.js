@@ -8,6 +8,7 @@ import AppActions from './actions/AppActions'
 import OrgActions from './actions/OrgActions'
 import LogList from './components/LogList'
 import Apps from './components/Apps'
+import AppFilter from './components/AppFilter'
 import Orgs from './components/Orgs'
 
 
@@ -45,6 +46,7 @@ React.render(
 
     <h2>All Apps</h2>
     <AltContainer store={AppStore}>
+      <AppFilter/>
       <Apps/>
     </AltContainer>
 

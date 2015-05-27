@@ -7,7 +7,7 @@ var Apps = React.createClass({
   render: function () {
     return (
       <div>
-        {this.props.apps.map(appInfo => <p key={appInfo.name}>{appInfo.name}</p>)}
+        {this.props.filteredApps.map(appInfo => <p key={appInfo.name}>{appInfo.name}</p>)}
       </div>
     )
   }
