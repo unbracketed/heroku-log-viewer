@@ -5,13 +5,16 @@ import LogActions from '../actions/LogActions'
 class LogStore {
   constructor() {
     this.logs = [];
+
     this.bindListeners({
-      handleUpdateLogs: LogActions.UPDATE_LOGS
+      handleUpdateLogs: LogActions.UPDATE_LOGS,
     })
   }
-  handleUpdateLogs(log){
+
+  handleUpdateLogs(log) {
     this.logs.push(log)
   }
+
 }
 
 module.exports = alt.createStore(LogStore, 'LogStore');
