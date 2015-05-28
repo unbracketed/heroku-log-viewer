@@ -1,7 +1,10 @@
 import React from 'react'
+import AltContainer from 'alt/AltContainer'
+import GroupsStore from '../stores/GroupsStore'
 import AddGroupForm from './AddGroupForm'
 
-const Groups = React.createClass({
+
+const GroupList = React.createClass({
   render: function () {
     const groups = this.props.groups
     let groupsList = 'No groups'
@@ -15,6 +18,16 @@ const Groups = React.createClass({
         <AddGroupForm/>
         {this.props.error}
       </div>
+    )
+  }
+})
+
+const Groups = React.createClass({
+  render: function () {
+    return (
+      <AltContainer store={GroupsStore}>
+        <GroupList/>
+      </AltContainer>
     )
   }
 })

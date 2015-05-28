@@ -1,15 +1,12 @@
 import React from 'react'
+import Router from 'react-router'
 import request from 'superagent'
-import AltContainer from 'alt/AltContainer';
-import LogStore from './stores/LogStore'
-import AppStore from './stores/AppStore'
-import GroupsStore from './stores/GroupsStore'
 import AppActions from './actions/AppActions'
 import GroupsActions from './actions/GroupsActions'
-import LogList from './components/LogList'
-import Apps from './components/Apps'
-import AppFilter from './components/AppFilter'
+import Home from './components/Home'
+import Group from './components/Group'
 import Groups from './components/Groups'
+const {DefaultRoute, Route, RouteHandler, Link} = Router
 
 
 //get apps
@@ -31,30 +28,30 @@ request
 const groups = localStorage.getItem('groups')
 if (groups) {
   GroupsActions.updateGroups(JSON.parse(groups))
-  //get groups
 }
 
 
 
-React.render(
-  (
-  <div>
+const App = React.createClass({
+  render: function () {
+    return (
+      <div>
+        <Link to="/">Apps</Link>
+        <Link to="groups">Groups</Link>
+        <RouteHandler/>
+      </div>
+    )
+  }
+})
 
-    <AltContainer store={GroupsStore}>
-      <Groups/>
-    </AltContainer>
-
-    <AltContainer store={AppStore}>
-      <h2>All Apps</h2>
-      <AppFilter/>
-      <Apps/>
-    </AltContainer>
-
-    <AltContainer store={LogStore}>
-      <LogList />
-    </AltContainer>
-
-
-  </div>),
-  document.body
+const routes = (
+  <Route handler={App} path='/'>
+    <DefaultRoute handler={Home} />
+    <Route name="groups" path='/groups' handler={Groups} />
+    <Route name="group" path='/group/:name' handler={Group} />
+  </Route>
 )
+
+Router.run(routes, function (Handler) {
+  React.render(<Handler/>, document.body);
+})
