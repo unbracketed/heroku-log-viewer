@@ -1,8 +1,9 @@
 import alt from "../alt"
 
 class AppActions {
-  updateApps(apps) {
-    this.dispatch(apps);
+  receiveApps(apps) {
+    console.log('receiveApps', apps)
+    this.dispatch(apps.data);
   }
   updateFilter(query) {
     this.dispatch(query)

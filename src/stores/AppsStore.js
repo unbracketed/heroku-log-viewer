@@ -1,17 +1,19 @@
 import alt from '../alt'
 import _ from 'lodash'
 import AppActions from '../actions/AppActions'
+import AppsSource from '../sources/AppsSource'
 
 
-class AppStore {
+class AppsStore {
 
   constructor() {
     this.apps = []
     this.filteredApps = []
     this.appFilter = ''
 
+    this.registerAsync(AppsSource)
     this.bindListeners({
-      handleUpdateApps: AppActions.UPDATE_APPS,
+      handleUpdateApps: AppActions.RECEIVE_APPS,
       handleUpdateFilter: AppActions.UPDATE_FILTER,
     })
     this.exportPublicMethods({
@@ -34,4 +36,4 @@ class AppStore {
   }
 }
 
-module.exports = alt.createStore(AppStore, 'AppStore');
+module.exports = alt.createStore(AppsStore, 'AppsStore');
