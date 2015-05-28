@@ -6,6 +6,7 @@ import GroupsActions from './actions/GroupsActions'
 import Home from './components/Home'
 import Group from './components/Group'
 import Groups from './components/Groups'
+import styles from './components/styles.styl'
 const {DefaultRoute, Route, RouteHandler, Link} = Router
 
 
