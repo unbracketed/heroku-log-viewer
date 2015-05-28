@@ -1,4 +1,6 @@
 import React from 'react'
+import Router from 'react-router'
+const {Link} = Router
 import AltContainer from 'alt/AltContainer'
 import AppStore from '../stores/AppStore'
 
@@ -7,10 +9,9 @@ const AppDetail = React.createClass({
       const app = this.props.app
       return (
         <div>
+            <h2>{app.name}</h2>
+            <Link to="appLogs" params={{name: app.name}}>View Logs</Link>
             <table>
-              <thead>
-                {app.name}
-              </thead>
               <tbody>
 
                 <tr>

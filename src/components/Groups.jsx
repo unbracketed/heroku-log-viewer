@@ -9,13 +9,13 @@ const GroupList = React.createClass({
     const groups = this.props.groups
     let groupsList = 'No groups'
     if (groups.length) {
-      groupsList = groups.map(grp => <p key={grp.name}>{grp.name}</p>)
+      groupsList = <ul>{groups.map(grp => <li key={grp.name}>{grp.name}</li>)}</ul>
     }
     return (
       <div>
         <h2>App Groups</h2>
-        {groupsList}
         <AddGroupForm/>
+        <ul>{groupsList}</ul>
         {this.props.error}
       </div>
     )
