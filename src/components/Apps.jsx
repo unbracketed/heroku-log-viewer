@@ -1,4 +1,6 @@
 import React from "react"
+import Router from 'react-router'
+const Link = Router.Link
 
 
 var Apps = React.createClass({
@@ -7,7 +9,18 @@ var Apps = React.createClass({
   render: function () {
     return (
       <div>
-        {this.props.filteredApps.map(appInfo => <p key={appInfo.name}>{appInfo.name}</p>)}
+        <ul>
+          {this.props.filteredApps.map(appInfo =>
+            <li>
+              <Link
+                key={appInfo.name}
+                to="appInfo"
+                params={{name: appInfo.name}}>
+                {appInfo.name}
+              </Link>
+            </li>)
+          }
+        </ul>
       </div>
     )
   }
