@@ -16,7 +16,6 @@ request
   .get('http://localhost:14000/apps')
   .set('Accept', 'application/json')
   .end((err, res) => {
-    console.log('apps response', err, res.body)
     res.body.sort((a,b) => {
       if (a.name > b.name) return 1
       if (a.name < b.name) return -1

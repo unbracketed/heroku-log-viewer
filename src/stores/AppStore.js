@@ -14,6 +14,9 @@ class AppStore {
       handleUpdateApps: AppActions.UPDATE_APPS,
       handleUpdateFilter: AppActions.UPDATE_FILTER,
     })
+    this.exportPublicMethods({
+      getAppByName: this.getAppByName
+    })
   }
 
   handleUpdateApps(apps) {
@@ -26,6 +29,9 @@ class AppStore {
     this.filteredApps = _.filter(this.apps, app => _.includes(app.name, query))
   }
 
+  getAppByName(name) {
+    return _.find(this.getState().apps, {name: name})
+  }
 }
 
 module.exports = alt.createStore(AppStore, 'AppStore');
