@@ -8,6 +8,11 @@ class AppActions {
   updateFilter(query) {
     this.dispatch(query)
   }
+  receiveAppConfig(appConfig) {
+    this.dispatch(appConfig.data)
+  }
+
+  //TODO data source err handlers
 }
 
 module.exports = alt.createActions(AppActions);

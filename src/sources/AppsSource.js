@@ -11,7 +11,17 @@ const AppsSource = {
 
     success: AppsActions.receiveApps,
     error: AppsActions.fetchAppsFailed
+  },
+
+  getAppConfig: {
+    remote(state, appName) {
+      return axios.get(`http://localhost:14000/apps/${appName}/config`)
+    },
+    success: AppsActions.receiveAppConfig,
+    error: AppsActions.fetchAppsFailed
   }
+
+
 }
 
 module.exports = AppsSource

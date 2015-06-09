@@ -11,6 +11,7 @@ const AppDetail = React.createClass({
         <div>
             <h2>{app.name}</h2>
             <Link to="appLogs" params={{appName: app.name}}>View Logs</Link>
+            <Link to="appConfig" params={{appName: app.name}}>Config Vars</Link>
             <table>
               <tbody>
 
