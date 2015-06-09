@@ -13,5 +13,7 @@ module.exports = getConfig({
   // commonly named `www` or `public`. This
   // is where your fully static site should
   // end up for simple deployment.
-  out: 'public'
+  out: 'public',
+
+  port: process.env.PORT || 25025
 })
