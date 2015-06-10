@@ -1,5 +1,5 @@
 import React from 'react'
-import AppsStore from '../stores/AppsStore'
+import AppsStore from '../../stores/AppsStore'
 
 
 module.exports = React.createClass({
@@ -12,6 +12,9 @@ module.exports = React.createClass({
     //TODO do we have
     AppsStore.getAppConfig(this.props.params.appName)
   },
+  componentWillUnmount: function () {
+    AppsStore.unlisten(this.onChange)
+  },
   onChange: function(state) {
     this.setState(state)
   },
@@ -22,9 +25,10 @@ module.exports = React.createClass({
 
       <div>
         <table>
-          {Object.keys(this.state.appConfig).map(k => (<tr><td>{k}</td><td>{config[k]}</td></tr>))}
+          <tbody>
+            {Object.keys(this.state.appConfig).map(k => (<tr key={k}><td>{k}</td><td>{config[k]}</td></tr>))}
+          </tbody>
         </table>
-
       </div>
     )
   }

@@ -10,6 +10,8 @@ class AppsStore {
     this.apps = []
     this.filteredApps = []
     this.appFilter = ''
+    this.loadingApp = false
+    this.currentApp = null
 
     //TODO
     this.appConfig = {}
@@ -18,14 +20,14 @@ class AppsStore {
     this.bindListeners({
       handleUpdateApps: AppActions.RECEIVE_APPS,
       handleUpdateFilter: AppActions.UPDATE_FILTER,
-      handleUpdateAppConfig: AppActions.RECEIVE_APP_CONFIG
-    })
-    this.exportPublicMethods({
-      getAppByName: this.getAppByName
+      handleUpdateAppConfig: AppActions.RECEIVE_APP_CONFIG,
+      handleUpdateApp: AppActions.RECEIVE_APP,
+      handleLoadingApp: AppActions.LOADING_APP
     })
   }
 
   handleUpdateApps(apps) {
+    console.log('handleUpdateApps', apps)
     this.apps = apps
     this.filteredApps = _.filter(apps, app => _.includes(app.name, this.appFilter))
   }
@@ -45,9 +47,19 @@ class AppsStore {
     this.filteredApps = _.filter(this.apps, app => _.includes(app.name, query))
   }
 
-  getAppByName(name) {
-    return _.find(this.getState().apps, {name: name})
+  handleUpdateApp(app) {
+    this.apps.push(app)
+    this.currentApp = app
+    this.loadingApp = false
   }
+
+  handleLoadingApp() {
+    this.loadingApp = true
+  }
+
+  // getAppByName(name) {
+  //   return _.find(this.getState().apps, {name: name})
+  // }
 }
 
 module.exports = alt.createStore(AppsStore, 'AppsStore');

@@ -5,6 +5,9 @@ import Apps from './Apps'
 import AppFilter from './AppFilter'
 
 const Home = React.createClass({
+  componentDidMount: function() {
+    AppsStore.getApps()
+  },
   render: function () {
     return (
       <div>

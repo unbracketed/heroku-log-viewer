@@ -1,17 +1,18 @@
 import React from 'react'
 import Router from 'react-router'
+import _ from 'lodash'
 const {Link} = Router
 import AltContainer from 'alt/AltContainer'
-import AppsStore from '../stores/AppsStore'
+import AppsStore from '../../stores/AppsStore'
 
 const AppDetail = React.createClass({
     render: function () {
-      const app = this.props.app
+      console.log('AppDetail', this.props, this.state)
+      const app = this.props.currentApp
+      if (app) {
+
       return (
         <div>
-            <h2>{app.name}</h2>
-            <Link to="appLogs" params={{appName: app.name}}>View Logs</Link>
-            <Link to="appConfig" params={{appName: app.name}}>Config Vars</Link>
             <table>
               <tbody>
 
@@ -48,28 +49,26 @@ const AppDetail = React.createClass({
         </div>
       )
     }
+    else {
+      return <div>loading yall</div>
+    }
+    }
 })
 
+
+
 module.exports = React.createClass({
+   componentDidMount: function() {
+     AppsStore.getApp(this.props.params.appName)
+   },
+
   render: function () {
     console.log('APPINFO', this.props, this.context)
     let appName = this.props.params.name
     return (
-      <AltContainer
-        stores={
-          {
-            app: function (props) {
-              console.log('app  ', props)
-              return {
-                store: AppsStore,
-                value: AppsStore.getAppByName(appName)
-              }
-            }
-          }
-        }
-      >
-        <AppDetail/>
-      </AltContainer>
+        <AltContainer store={AppsStore}>
+          <AppDetail />
+        </AltContainer>
     )
   }
 })

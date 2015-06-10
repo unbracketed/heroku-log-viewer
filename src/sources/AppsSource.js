@@ -13,6 +13,16 @@ const AppsSource = {
     error: AppsActions.fetchAppsFailed
   },
 
+  getApp: {
+    remote(state, appName) {
+      console.log('getApp')
+      return axios.get(`http://localhost:14000/apps/${appName}`)
+    },
+    loading: AppsActions.loadingApp,
+    success: AppsActions.receiveApp,
+    error: AppsActions.fetchAppFailed
+  },
+
   getAppConfig: {
     remote(state, appName) {
       return axios.get(`http://localhost:14000/apps/${appName}/config`)

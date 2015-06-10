@@ -7,15 +7,15 @@ var Apps = React.createClass({
   displayName: 'Apps',
 
   render: function () {
+    console.log('Apps render', this.props, this.state)
     return (
       <div>
         <ul>
           {this.props.filteredApps.map(appInfo =>
-            <li>
+            <li key={appInfo.name}>
               <Link
-                key={appInfo.name}
-                to="appInfo"
-                params={{name: appInfo.name}}>
+                to="appMain"
+                params={{appName: appInfo.name}}>
                 {appInfo.name}
               </Link>
             </li>)

@@ -12,6 +12,15 @@ class AppActions {
     this.dispatch(appConfig.data)
   }
 
+  loadingApp() {
+    console.log('loadingApp', arguments)
+    this.dispatch('loading app')
+  }
+
+  receiveApp(app) {
+    this.dispatch(app.data)
+  }
+
   //TODO data source err handlers
 }
 
