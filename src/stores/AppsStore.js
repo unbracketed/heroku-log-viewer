@@ -57,9 +57,6 @@ class AppsStore {
     this.loadingApp = true
   }
 
-  // getAppByName(name) {
-  //   return _.find(this.getState().apps, {name: name})
-  // }
 }
 
 module.exports = alt.createStore(AppsStore, 'AppsStore');

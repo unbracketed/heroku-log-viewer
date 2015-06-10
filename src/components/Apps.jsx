@@ -8,6 +8,7 @@ var Apps = React.createClass({
 
   render: function () {
     console.log('Apps render', this.props, this.state)
+    
     return (
       <div>
         <ul>

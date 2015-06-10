@@ -3,8 +3,10 @@ import Router from 'react-router'
 const {Link, RouteHandler} = Router
 
 const AppView = React.createClass({
+
   render: function() {
     console.log('AppView render', this.props, this.state)
+
     const appName = this.props.params.appName
     return (
       <div>

@@ -3,12 +3,15 @@ import GroupsActions from '../actions/GroupsActions'
 
 
 module.exports = React.createClass({
+
   displayName: 'AddOrgForm',
+
   handleSubmit: function (e) {
     e.preventDefault()
     const groupName = React.findDOMNode(this.refs.name).value.trim()
     GroupsActions.addGroup(groupName)
   },
+
   render: function () {
     return (
       <form onSubmit={this.handleSubmit}>

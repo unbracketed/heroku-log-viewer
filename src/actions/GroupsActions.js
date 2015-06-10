@@ -2,8 +2,8 @@ import alt from '../alt'
 import _ from 'lodash'
 
 class GroupsActions {
-  addGroup(group) {
 
+  addGroup(group) {
     let groups = this.alt.stores.GroupsStore.getState().groups
     if (!groups) {
       groups = []
@@ -22,6 +22,7 @@ class GroupsActions {
     localStorage.setItem('groups', JSON.stringify(groups))
     this.actions.updateGroups(groups)
   }
+
   updateGroups(groups) {
     this.dispatch(groups);
   }
