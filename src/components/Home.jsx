@@ -1,24 +1,21 @@
-import React from 'react'
-import AltContainer from 'alt/AltContainer';
-import AppsStore from '../stores/AppsStore'
+import React, {Component} from 'react'
+import { connect } from 'redux/react';
 import Apps from './Apps'
 import AppFilter from './AppFilter'
 
-const Home = React.createClass({
-  componentDidMount: function() {
-    AppsStore.getApps()
-  },
-  render: function () {
+
+export default class Home extends Component {
+
+  render() {
+    console.log('Home', this.props)
     return (
       <div>
-        <AltContainer store={AppsStore}>
-          <h2>All Apps</h2>
-          <AppFilter/>
-          <Apps/>
-        </AltContainer>
+        <h2>All Apps</h2>
+        <AppFilter/>
+        <Apps/>
       </div>
     )
   }
-})
+}
 
 module.exports = Home

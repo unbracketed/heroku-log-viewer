@@ -1,53 +1,18 @@
 import React from 'react'
-import Router from 'react-router'
-import AppActions from './actions/AppActions'
-import GroupsActions from './actions/GroupsActions'
-import AppsStore from './stores/AppsStore'
-import Home from './components/Home'
-import AppView from './components/app/View'
-import AppDetailHandler from './components/app/Default'
-import AppConfigHandler from './components/app/Config'
-import AppLogsHandler from './components/app/Logs'
-import Group from './components/Group'
-import Groups from './components/Groups'
-import styles from './components/styles.styl'
-const {DefaultRoute, Route, RouteHandler, Link} = Router
+import { Route } from 'react-router'
+import History from 'react-router/lib/BrowserHistory'
+import { createStore, composeReducers } from 'redux'
+import { Provider } from 'redux/react'
+import reducers from './reducers'
+import Router from './components/Router'
+import './components/styles.styl'
 
+const history = new History
+const store = createStore(reducers);
 
-//get Groups
-const groups = localStorage.getItem('groups')
-if (groups) {
-  GroupsActions.updateGroups(JSON.parse(groups))
-}
-
-
-const App = React.createClass({
-  render: function () {
-    return (
-      <div>
-        <nav>
-          <Link to="/"> Apps </Link>
-          <Link to="groups"> Groups </Link>
-        </nav>
-        <RouteHandler/>
-      </div>
-    )
-  }
-})
-
-const routes = (
-  <Route handler={App} path='/'>
-    <DefaultRoute handler={Home} />
-    <Route name="appMain" path='apps/:appName' handler={AppView}>
-      <DefaultRoute handler={AppDetailHandler} />
-      <Route name="appLogs" path='logs' handler={AppLogsHandler} />
-      <Route name="appConfig" path='config' handler={AppConfigHandler} />
-    </Route>
-    <Route name="groups" path='/groups' handler={Groups} />
-    <Route name="group" path='/group/:name' handler={Group} />
-  </Route>
+React.render(
+  <Provider {...{store}}>
+    {() => (<Router {...{history}}/>)}
+  </Provider>,
+  document.body
 )
-
-Router.run(routes, function (Handler) {
-  React.render(<Handler/>, document.body);
-})

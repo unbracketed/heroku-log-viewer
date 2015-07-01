@@ -1,5 +1,5 @@
 import React from 'react'
-import AppsStore from '../../stores/AppsStore'
+// import AppsStore from '../../stores/AppsStore'
 
 
 module.exports = React.createClass({

@@ -1,4 +1,3 @@
-import alt from "../alt"
 
 class AppActions {
 
@@ -27,4 +26,4 @@ class AppActions {
   //TODO data source err handlers
 }
 
-module.exports = alt.createActions(AppActions);
+module.exports = TODO 

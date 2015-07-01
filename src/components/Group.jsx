@@ -1,6 +1,6 @@
 import React from 'react'
-import GroupsStore from '../stores/GroupsStore'
-import AltContainer from 'alt/AltContainer';
+// import GroupsStore from '../stores/GroupsStore'
+// import AltContainer from 'alt/AltContainer';
 
 const Group = React.createClass({
   render: function () {

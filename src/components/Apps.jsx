@@ -1,21 +1,29 @@
-import React from "react"
-import Router from 'react-router'
-const Link = Router.Link
+import React from 'react'
+import { Link } from 'react-router'
+import { connect } from 'redux/react'
+import { prepareRoute } from '../lib/decorators'
+import actions from '../actions'
 
+@prepareRoute(async function ({store, params}) {
+  return await store.dispatch(actions.loadApps())
+})
+@connect(state => ({apps: state.apps}))
+//@connect(state => {console.log('connect', state); return state})
+class Apps {
 
-var Apps = React.createClass({
-  displayName: 'Apps',
-
-  render: function () {
+  render () {
     console.log('Apps render', this.props, this.state)
-    
+
+
+    const { apps } = this.props
+
     return (
       <div>
         <ul>
-          {this.props.filteredApps.map(appInfo =>
+          {apps.map(appInfo =>
             <li key={appInfo.name}>
               <Link
-                to="appMain"
+                to={`/app/${name}`}
                 params={{appName: appInfo.name}}>
                 {appInfo.name}
               </Link>
@@ -25,6 +33,6 @@ var Apps = React.createClass({
       </div>
     )
   }
-})
+}
 
 module.exports = Apps

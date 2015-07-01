@@ -1,7 +1,6 @@
-import alt from '../alt'
 import _ from 'lodash'
-import AppActions from '../actions/AppActions'
-import AppsSource from '../sources/AppsSource'
+// import AppActions from '../actions/AppActions'
+// import AppsSource from '../sources/AppsSource'
 
 
 class AppsStore {

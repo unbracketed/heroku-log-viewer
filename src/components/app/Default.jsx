@@ -2,8 +2,8 @@ import React from 'react'
 import Router from 'react-router'
 import _ from 'lodash'
 const {Link} = Router
-import AltContainer from 'alt/AltContainer'
-import AppsStore from '../../stores/AppsStore'
+// import AltContainer from 'alt/AltContainer'
+// import AppsStore from '../../stores/AppsStore'
 
 
 const AppDetail = React.createClass({

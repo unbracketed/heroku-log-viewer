@@ -1,4 +1,3 @@
-import alt from '../alt'
 import _ from 'lodash'
 
 class GroupsActions {

@@ -1,6 +1,6 @@
 import React from 'react'
-import AltContainer from 'alt/AltContainer'
-import GroupsStore from '../stores/GroupsStore'
+// import AltContainer from 'alt/AltContainer'
+// import GroupsStore from '../stores/GroupsStore'
 import AddGroupForm from './AddGroupForm'
 
 

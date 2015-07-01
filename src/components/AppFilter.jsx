@@ -1,20 +1,20 @@
 import React from 'react'
-import AppActions from '../actions/AppActions'
 
 const AppFilter = React.createClass({
 
-  getInitialState: function() {
-    return {value: ''};
+  getInitialState: function () {
+    return {value: ''}
   },
 
-  handleChange: function(event) {
+  handleChange: function (event) {
     this.setState({value: event.target.value});
-    AppActions.updateFilter(event.target.value)
+    //AppActions.updateFilter(event.target.value)
+    //TODO
   },
 
-  render: function() {
-    var value = this.state.value;
-    return <input type="text" value={value} onChange={this.handleChange} />;
+  render: function () {
+    const value = this.state.value
+    return <input type="text" value={value} onChange={this.handleChange} />
   }
 })
 
