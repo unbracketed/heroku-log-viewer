@@ -14,16 +14,14 @@ class AppView {
 
   render () {
     console.log('AppView render', this.props, this.state)
-    const { currentApp } = this.props
+    const { currentApp, params: {appName} } = this.props
 
-    let content = (currentApp ? (
+    let content = null
+    if (this.props.children) {
+      content = this.props.children
+    } else if (currentApp) {
+      content = (
 
-          <div>
-        <header>
-            <Link to='/'>Apps</Link>
-            <h2>{currentApp.name}</h2>
-        </header>
-        <section>
           <table>
             <tbody>
               {_.pairs(currentApp).map(([k, v]) =>
@@ -33,11 +31,24 @@ class AppView {
               )}
             </tbody>
           </table>
+
+      )
+    } else {
+      content = <div>Loading..</div>
+    }
+    return (
+      <div>
+        <header>
+            <Link to='/'>Apps</Link>
+            <h2>{appName}</h2>
+            <Link to={`/apps/${appName}`}>Info</Link>
+            <Link to={`/apps/${appName}/config`}>Config</Link>
+        </header>
+        <section>
+          {content}
         </section>
       </div>
-    ) : (<div>Loadin</div>))
-
-    return content
+    )
   }
 }
 

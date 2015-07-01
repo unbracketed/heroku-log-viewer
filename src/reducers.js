@@ -1,8 +1,9 @@
-import { LOAD_APPS, LOAD_APP } from './constants'
+import { LOAD_APPS, LOAD_APP, LOAD_APP_CONFIG } from './constants'
 
 const initialState = {
   apps: [],
-  currentApp: null
+  currentApp: null,
+  currentAppConfig: null
 }
 
 export default function apps (state=initialState, action) {
@@ -17,6 +18,11 @@ export default function apps (state=initialState, action) {
       return {
         ...state,
         currentApp: action.app
+      }
+    case LOAD_APP_CONFIG:
+      return {
+        ...state,
+        currentAppConfig: action.config
       }
     default:
       return state
