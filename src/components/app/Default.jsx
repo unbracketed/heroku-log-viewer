@@ -1,14 +1,10 @@
 import React from 'react'
-import Router from 'react-router'
 import _ from 'lodash'
-const {Link} = Router
-// import AltContainer from 'alt/AltContainer'
-// import AppsStore from '../../stores/AppsStore'
 
 
-const AppDetail = React.createClass({
+export default class Detail {
 
-    render: function () {
+    render () {
       console.log('AppDetail', this.props, this.state)
 
       const app = this.props.currentApp
@@ -55,25 +51,26 @@ const AppDetail = React.createClass({
       return <div>loading yall</div>
     }
   }
-})
+}
 
 
 
-module.exports = React.createClass({
 
-  //TODO use data source utils
-  componentDidMount: function() {
-   AppsStore.getApp(this.props.params.appName)
-  },
-  //-------------------------
-
-  render: function () {
-    console.log('APPINFO', this.props, this.context)
-
-    return (
-        <AltContainer store={AppsStore}>
-          <AppDetail />
-        </AltContainer>
-    )
-  }
-})
+// module.exports = React.createClass({
+//
+//   //TODO use data source utils
+//   componentDidMount: function() {
+//    AppsStore.getApp(this.props.params.appName)
+//   },
+//   //-------------------------
+//
+//   render: function () {
+//     console.log('APPINFO', this.props, this.context)
+//
+//     return (
+//         <AltContainer store={AppsStore}>
+//           <AppDetail />
+//         </AltContainer>
+//     )
+//   }
+// })

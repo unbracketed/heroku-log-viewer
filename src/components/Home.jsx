@@ -8,11 +8,17 @@ export default class Home extends Component {
 
   render() {
     console.log('Home', this.props)
+    const { children } = this.props
+
     return (
       <div>
-        <h2>All Apps</h2>
-        <AppFilter/>
-        <Apps/>
+        {children ? children : (
+          <div>
+            <h2>All Apps</h2>
+            <AppFilter/>
+            <Apps/>
+          </div>
+        )}
       </div>
     )
   }

@@ -1,29 +1,37 @@
 import React from 'react'
-import Router from 'react-router'
-const {Link, RouteHandler} = Router
+import { Link } from 'react-router'
+import { connect } from 'redux/react'
+import { prepareRoute } from '../../lib/decorators'
+import { loadApp } from '../../actions'
+import _ from 'lodash'
 
-const AppView = React.createClass({
+@prepareRoute(async function ({store, params}) {
+  console.log('prepR', params)
+  return await store.dispatch(loadApp(params.appName))
+})
+@connect(state => ({currentApp: state.currentApp}))
+class AppView {
 
-  render: function() {
+  render () {
     console.log('AppView render', this.props, this.state)
+    const { currentApp } = this.props
 
-    const appName = this.props.params.appName
     return (
       <div>
         <header>
-            <h2>{appName}</h2>
+            <Link to='/'>Apps</Link>
+            <h2>{currentApp.name}</h2>
         </header>
-        <nav>
-            <Link to="appMain" params={{appName}}>Detail</Link>
-            <Link to="appLogs" params={{appName}}>View Logs</Link>
-            <Link to="appConfig" params={{appName}}>Config Vars</Link>
-        </nav>
         <section>
-            <RouteHandler />
+          <table>
+            <tbody>
+              {_.pairs(currentApp).map(([k, v]) => <tr><td>{k}</td><td>{v}</td></tr>)}
+            </tbody>
+          </table>
         </section>
       </div>
     )
   }
-})
+}
 
 module.exports = AppView
