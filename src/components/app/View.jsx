@@ -16,8 +16,9 @@ class AppView {
     console.log('AppView render', this.props, this.state)
     const { currentApp } = this.props
 
-    return (
-      <div>
+    let content = (currentApp ? (
+
+          <div>
         <header>
             <Link to='/'>Apps</Link>
             <h2>{currentApp.name}</h2>
@@ -25,12 +26,18 @@ class AppView {
         <section>
           <table>
             <tbody>
-              {_.pairs(currentApp).map(([k, v]) => <tr><td>{k}</td><td>{v}</td></tr>)}
+              {_.pairs(currentApp).map(([k, v]) =>
+                <tr key={k}>
+                  <td>{k}</td><td>{v}</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </section>
       </div>
-    )
+    ) : (<div>Loadin</div>))
+
+    return content
   }
 }
 
