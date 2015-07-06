@@ -1,15 +1,24 @@
 import React from 'react'
-// import AltContainer from 'alt/AltContainer'
-// import GroupsStore from '../stores/GroupsStore'
+import { connect } from 'redux/react'
+import { prepareRoute } from '../lib/decorators'
+import { loadGroups } from '../actions'
 import AddGroupForm from './AddGroupForm'
 
 
-const GroupList = React.createClass({
-  render: function () {
+@prepareRoute(async function ({store, params}) {
+  return await store.dispatch(loadGroups())
+})
+@connect(state => ({groups: state.groups}))
+class Groups {
+  render () {
     const groups = this.props.groups
     let groupsList = 'No groups'
     if (groups.length) {
-      groupsList = <ul>{groups.map(grp => <li key={grp.name}>{grp.name}</li>)}</ul>
+      groupsList = (
+        <ul>
+          {groups.map(grp => <li key={grp.name}>{grp.name}</li>)}
+        </ul>
+      )
     }
     return (
       <div>
@@ -20,16 +29,6 @@ const GroupList = React.createClass({
       </div>
     )
   }
-})
-
-const Groups = React.createClass({
-  render: function () {
-    return (
-      <AltContainer store={GroupsStore}>
-        <GroupList/>
-      </AltContainer>
-    )
-  }
-})
+}
 
 module.exports = Groups

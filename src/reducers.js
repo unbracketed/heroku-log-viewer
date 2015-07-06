@@ -1,9 +1,15 @@
-import { LOAD_APPS, LOAD_APP, LOAD_APP_CONFIG } from './constants'
+import {
+  LOAD_APPS,
+  LOAD_APP,
+  LOAD_APP_CONFIG,
+  LOAD_GROUPS
+} from './constants'
 
 const initialState = {
   apps: [],
   currentApp: null,
-  currentAppConfig: null
+  currentAppConfig: null,
+  groups: []
 }
 
 export default function apps (state=initialState, action) {
@@ -23,6 +29,11 @@ export default function apps (state=initialState, action) {
       return {
         ...state,
         currentAppConfig: action.config
+      }
+    case LOAD_GROUPS:
+      return {
+        ...state,
+        groups: action.groups
       }
     default:
       return state

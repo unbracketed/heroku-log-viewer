@@ -35,4 +35,15 @@ var loadAppConfig = function (appName) {
   }
 }
 
-export { loadApps, loadApp, loadAppConfig }
+var loadGroups = function () {
+  return dispatch => {
+    fetch(`http://localhost:8000/groups/`)
+    .then(res => res.json())
+    .then(res => dispatch({
+      type: constants.LOAD_GROUPS,
+      groups: res.results
+    }))
+  }
+}
+
+export { loadApps, loadApp, loadAppConfig, loadGroups }
