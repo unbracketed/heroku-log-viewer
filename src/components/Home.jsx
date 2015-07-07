@@ -7,7 +7,6 @@ import AppFilter from './AppFilter'
 export default class Home extends Component {
 
   render() {
-    console.log('Home', this.props)
     const { children } = this.props
 
     return (

@@ -11,28 +11,7 @@ import _ from 'lodash'
 @connect(state => ({config: state.currentAppConfig}))
 class Config {
 
-  // getInitialState: function() {
-  //   return AppsStore.getState()
-  // },
-  //
-  // componentDidMount: function() {
-  //   console.log('CDM', this.props)
-  //   AppsStore.listen(this.onChange)
-  //   AppsStore.getAppConfig(this.props.params.appName)
-  // },
-  //
-  // componentWillUnmount: function () {
-  //   AppsStore.unlisten(this.onChange)
-  // },
-  //
-  // onChange: function(state) {
-  //   this.setState(state)
-  // },
-  // -------------------------------------
-
   render () {
-    console.log('AppConfig', this.props, this.state)
-    //const config = this.state.appConfig
     const { config } = this.props
     let content = null
     if (config) {
@@ -48,8 +27,7 @@ class Config {
       content = "Loadin'"
     }
     return (
-      <div>{content}
-      </div>
+      <div>{content}</div>
     )
   }
 }

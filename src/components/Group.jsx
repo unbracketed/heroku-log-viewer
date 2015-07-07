@@ -18,7 +18,7 @@ class Group {
         <div>
           <h2>{group.name}</h2>
           <ul>
-              {group.apps.map(app => <li>{app.name}</li>)}
+              {group.apps.map(app => <li key={app.name}>{app.name}</li>)}
           </ul>
         </div>
       )

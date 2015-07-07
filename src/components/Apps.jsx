@@ -11,9 +11,7 @@ import { loadApps } from '../actions'
 class Apps {
 
   render () {
-    console.log('Apps render', this.props, this.state)
     const { apps } = this.props
-
     return (
       <div>
         <ul>

@@ -15,7 +15,7 @@ const initialState = {
 }
 
 export default function apps (state=initialState, action) {
-  console.log('reduce: apps', state, action)
+  console.log('REDUCE', state, action)
   switch (action.type) {
     case LOAD_APPS:
       return {

@@ -31,7 +31,7 @@ class Groups {
         <ul>{groupsList}</ul>
         {this.props.error}
 
-        ==chil=={this.props.children}====
+        {this.props.children}
       </div>
     )
   }

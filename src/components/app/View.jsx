@@ -6,14 +6,12 @@ import { loadApp } from '../../actions'
 import _ from 'lodash'
 
 @prepareRoute(async function ({store, params}) {
-  console.log('prepR', params)
   return await store.dispatch(loadApp(params.appName))
 })
 @connect(state => ({currentApp: state.currentApp}))
 class AppView {
 
   render () {
-    console.log('AppView render', this.props, this.state)
     const { currentApp, params: {appName} } = this.props
 
     let content = null

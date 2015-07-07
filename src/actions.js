@@ -1,6 +1,5 @@
 import 'whatwg-fetch'
 import * as constants from './constants'
-console.log('CONST', constants)
 
 var loadApps = function () {
   return dispatch => {
