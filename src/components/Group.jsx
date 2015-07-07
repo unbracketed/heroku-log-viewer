@@ -6,7 +6,6 @@ import { loadGroup } from '../actions'
 
 
 @prepareRoute(async function ({store, params}) {
-  console.log('GROUP prepR', params)
   return await store.dispatch(loadGroup(params.groupSlug))
 })
 @connect(state => ({group: state.currentGroup}))
@@ -19,7 +18,7 @@ class Group {
         <div>
           <h2>{group.name}</h2>
           <ul>
-              {group.apps.map(app => <li>{app}</li>)}
+              {group.apps.map(app => <li>{app.name}</li>)}
           </ul>
         </div>
       )
