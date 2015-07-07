@@ -1,5 +1,4 @@
 import React from 'react'
-// import GroupsActions from '../actions/GroupsActions'
 
 
 module.exports = React.createClass({

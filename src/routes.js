@@ -4,8 +4,8 @@ import Home from './components/Home'
 import AppView from './components/app/View'
 import AppConfig from './components/app/Config'
 import AppLogs from './components/app/Logs'
-import Group from './components/Group'
-import Groups from './components/Groups'
+import Group from './components/groups/Group'
+import Groups from './components/groups/Groups'
 
 export default (
     <Route path='/' component={Home} >

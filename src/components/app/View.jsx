@@ -37,10 +37,11 @@ class AppView {
     return (
       <div>
         <header>
-            <Link to='/'>Apps</Link>
             <h2>{appName}</h2>
-            <Link to={`/apps/${appName}`}>Info</Link>
-            <Link to={`/apps/${appName}/config`}>Config</Link>
+            <nav>
+              <Link to={`/apps/${appName}`}>Info</Link>
+              <Link to={`/apps/${appName}/config`}>Config</Link>
+            </nav>
         </header>
         <section>
           {content}

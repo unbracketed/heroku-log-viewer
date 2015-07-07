@@ -1,9 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { connect } from 'redux/react'
-import { prepareRoute } from '../lib/decorators'
-import { loadGroup } from '../actions'
-
-
+import { prepareRoute } from '../../lib/decorators'
+import { loadGroup } from '../../actions'
 
 @prepareRoute(async function ({store, params}) {
   return await store.dispatch(loadGroup(params.groupSlug))
@@ -16,9 +15,12 @@ class Group {
 
       return (
         <div>
-          <h2>{group.name}</h2>
           <ul>
-              {group.apps.map(app => <li key={app.name}>{app.name}</li>)}
+              {group.apps.map(app => (
+                <li key={app.name}>
+                  <Link to={`/apps/${app.name}`}>{app.name}</Link>
+                </li>
+              ))}
           </ul>
         </div>
       )

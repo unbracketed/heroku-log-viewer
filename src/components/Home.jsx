@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router'
 import { connect } from 'redux/react';
 import Apps from './Apps'
 import AppFilter from './AppFilter'
@@ -11,6 +12,12 @@ export default class Home extends Component {
 
     return (
       <div>
+        <header>
+          <nav>
+            <Link to="/">Apps</Link>
+            <Link to="/groups">Groups</Link>
+          </nav>
+        </header>
         {children ? children : (
           <div>
             <h2>All Apps</h2>
