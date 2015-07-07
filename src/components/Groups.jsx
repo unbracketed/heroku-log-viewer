@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { connect } from 'redux/react'
 import { prepareRoute } from '../lib/decorators'
 import { loadGroups } from '../actions'
@@ -16,7 +17,10 @@ class Groups {
     if (groups.length) {
       groupsList = (
         <ul>
-          {groups.map(grp => <li key={grp.name}>{grp.name}</li>)}
+          {groups.map(grp => (
+              <li key={grp.name}><Link to={`/groups/${grp.slug}`}>{grp.name}</Link></li>
+            )
+          )}
         </ul>
       )
     }
@@ -26,6 +30,8 @@ class Groups {
         <AddGroupForm/>
         <ul>{groupsList}</ul>
         {this.props.error}
+
+        ==chil=={this.props.children}====
       </div>
     )
   }

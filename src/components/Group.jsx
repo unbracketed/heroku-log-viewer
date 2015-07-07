@@ -1,18 +1,32 @@
 import React from 'react'
-// import GroupsStore from '../stores/GroupsStore'
-// import AltContainer from 'alt/AltContainer';
+import { connect } from 'redux/react'
+import { prepareRoute } from '../lib/decorators'
+import { loadGroup } from '../actions'
 
-const Group = React.createClass({
-  render: function () {
-    return (
-      <div>
-        <h2>{this.props.name}</h2>
-        <AltContainer store={GroupsStore}>
-          <Groups/>
-        </AltContainer>
-      </div>
-    )
-  }
+
+
+@prepareRoute(async function ({store, params}) {
+  console.log('GROUP prepR', params)
+  return await store.dispatch(loadGroup(params.groupSlug))
 })
+@connect(state => ({group: state.currentGroup}))
+class Group {
+  render () {
+    const { group } = this.props
+    if (group) {
+
+      return (
+        <div>
+          <h2>{group.name}</h2>
+          <ul>
+              {group.apps.map(app => <li>{app}</li>)}
+          </ul>
+        </div>
+      )
+    } else {
+      return <div>Loading</div>
+    }
+  }
+}
 
 module.exports = Group

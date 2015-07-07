@@ -13,7 +13,8 @@ export default (
         <Route path='logs' component={AppLogs} />
         <Route path='config' component={AppConfig} />
       </Route>
-      <Route path='groups' component={Groups} />
-      <Route path='group/:name' component={Group} />
+      <Route path='groups' component={Groups}>
+        <Route path=':groupSlug' component={Group} />
+      </Route>
     </Route>
 )
