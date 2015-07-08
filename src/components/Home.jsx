@@ -14,17 +14,16 @@ export default class Home extends Component {
       <div>
         <header>
           <nav>
-            <Link to="/">Apps</Link>
+            <Link to="/apps">Apps</Link>
             <Link to="/groups">Groups</Link>
           </nav>
         </header>
-        {children ? children : (
-          <div>
-            <h2>All Apps</h2>
-            <AppFilter/>
-            <Apps/>
-          </div>
-        )}
+        {children
+          ? children
+          : (<section>
+                <h2>Heroku Manager</h2>
+             </section>)
+        }
       </div>
     )
   }

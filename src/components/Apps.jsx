@@ -14,6 +14,7 @@ class Apps {
     const { apps } = this.props
     return (
       <div>
+        <h2>Apps</h2>
         <ul>
           {apps.map(appInfo =>
             <li key={appInfo.name}>

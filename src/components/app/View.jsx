@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import { connect } from 'redux/react'
 import { prepareRoute } from '../../lib/decorators'
 import { loadApp } from '../../actions'
-import _ from 'lodash'
 
 @prepareRoute(async function ({store, params}) {
   return await store.dispatch(loadApp(params.appName))
@@ -12,28 +11,13 @@ import _ from 'lodash'
 class AppView {
 
   render () {
-    const { currentApp, params: {appName} } = this.props
+    const {
+      children,
+      params: {
+        appName
+      }
+    } = this.props
 
-    let content = null
-    if (this.props.children) {
-      content = this.props.children
-    } else if (currentApp) {
-      content = (
-
-          <table>
-            <tbody>
-              {_.pairs(currentApp).map(([k, v]) =>
-                <tr key={k}>
-                  <td>{k}</td><td>{v}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-
-      )
-    } else {
-      content = <div>Loading..</div>
-    }
     return (
       <div>
         <header>
@@ -44,7 +28,7 @@ class AppView {
             </nav>
         </header>
         <section>
-          {content}
+          App
         </section>
       </div>
     )

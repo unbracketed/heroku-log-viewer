@@ -29,7 +29,7 @@ class Groups {
     }
     return (
       <div>
-        <h2>Groups{currentGroup ? ': ' + currentGroup.name : ''}</h2>
+        <h2>{currentGroup ? currentGroup.name : 'Groups'}</h2>
         {!currentGroup && groupsList}
         {this.props.children}
       </div>
