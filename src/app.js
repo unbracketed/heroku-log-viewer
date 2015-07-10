@@ -6,6 +6,8 @@ import { Provider } from 'redux/react'
 import reducers from './reducers'
 import Router from './components/Router'
 import './components/styles.styl'
+import './styles/mdl/material.min.css'
+import './styles/mdl/material.min.js'
 
 const history = new History
 const store = createStore(reducers);

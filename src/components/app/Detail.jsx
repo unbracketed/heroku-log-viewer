@@ -20,11 +20,18 @@ class Detail {
     let content = null
     if (info) {
       content = (
-        <table>
+        <table className="summary mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th className="mdl-data-table__cell--non-numeric">attribute</th>
+              <th className="mdl-data-table__cell--non-numeric">value</th>
+            </tr>
+          </thead>
           <tbody>
             {Object.keys(info).map(k => (
               <tr key={k}>
-                <td>{k}</td><td>{info[k]}</td>
+                <td className="mdl-data-table__cell--non-numeric">{k}</td>
+                <td className="mdl-data-table__cell--non-numeric">{info[k]}</td>
               </tr>
             ))}
           </tbody>
