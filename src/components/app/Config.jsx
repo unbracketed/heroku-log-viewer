@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { prepareRoute } from '../../lib/decorators'
 import { loadAppConfig } from '../../actions'
-import _ from 'lodash'
 
 @prepareRoute(async function ({store, params}) {
   console.log('prepR', params)

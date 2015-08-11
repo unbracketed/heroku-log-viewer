@@ -1,4 +1,4 @@
-import 'whatwg-fetch'
+import 'whatwg-fetch'  // polyfills window.fetch
 import * as constants from './constants'
 
 var loadApps = function () {

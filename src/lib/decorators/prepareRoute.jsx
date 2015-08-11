@@ -1,7 +1,7 @@
 // from quangbuule/redux-example
 import React, { PropTypes } from 'react'
 
-export default function prepareRoute(prepareFn) {
+export default function prepareRoute (prepareFn) {
 
   return DecoratedComponent =>
     class PrepareRouteDecorator extends React.Component {
@@ -12,19 +12,19 @@ export default function prepareRoute(prepareFn) {
         store: PropTypes.object.isRequired
       }
 
-      render() {
+      render () {
         return (
           <DecoratedComponent {...this.props} />
-        );
+        )
       }
 
-      componentDidMount() {
+      componentDidMount () {
         const {
           context: { store },
           props: { params, location }
-        } = this;
+        } = this
 
-        prepareFn({ store, params, location });
+        prepareFn({ store, params, location })
       }
-    };
+    }
 }
