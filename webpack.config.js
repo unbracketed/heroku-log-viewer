@@ -11,6 +11,7 @@ var config = getConfig({
       'index.html': context.defaultTemplate({
         title: 'Heroku Manager',
         //head: '<link rel="stylesheet" href="">'
+        head: '<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.blue_grey-light_blue.min.css" /> <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">',
         css: '//fonts.googleapis.com/icon?family=Material+Icons'
       })
     }
