@@ -2,9 +2,12 @@ import 'whatwg-fetch'
 import * as constants from './constants'
 
 var loadApps = function () {
+  console.log('loadApps')
   return dispatch => {
+    console.log('loadApps running')
     fetch('http://localhost:14000/apps')
     .then(res => res.json())
+    .then(res => {console.log('loadApps: ', res); return res})
     .then(res => dispatch({
       type: constants.LOAD_APPS,
       apps: res
@@ -35,7 +38,9 @@ var loadAppConfig = function (appName) {
 }
 
 var loadGroups = function () {
+  console.log('load groups')
   return dispatch => {
+    console.log('load groups running')
     fetch(`http://localhost:8000/groups/`)
     .then(res => res.json())
     .then(res => dispatch({

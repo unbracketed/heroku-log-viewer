@@ -1,16 +1,16 @@
 import React from 'react'
-import { Route } from 'react-router'
 import History from 'react-router/lib/BrowserHistory'
-import { createStore, composeReducers } from 'redux'
-import { Provider } from 'redux/react'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 import reducers from './reducers'
 import Router from './components/Router'
-import './components/styles.styl'
-import './styles/mdl/material.min.css'
 import './styles/mdl/material.min.js'
 
 const history = new History
-const store = createStore(reducers);
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+const store = createStoreWithMiddleware(reducers)
+
 
 React.render(
   <Provider {...{store}}>

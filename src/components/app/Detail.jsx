@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'redux/react'
+import { connect } from 'react-redux'
 import { prepareRoute } from '../../lib/decorators'
 import { loadApp } from '../../actions'
 import _ from 'lodash'
@@ -43,7 +43,7 @@ class Detail {
     }
     return (
       <div>
-        <h2>{appName}</h2>
+        <div className="mdl-typography--display-1 mdl-color--purple-900 mdl-color-text--white">{appName}</div>
         {content}
       </div>
     )

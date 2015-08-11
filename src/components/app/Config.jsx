@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'redux/react'
+import { connect } from 'react-redux'
 import { prepareRoute } from '../../lib/decorators'
 import { loadAppConfig } from '../../actions'
 import _ from 'lodash'

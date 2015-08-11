@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router'
-import { connect } from 'redux/react';
+import { connect } from 'react-redux';
 import Apps from './Apps'
 import AppFilter from './AppFilter'
 

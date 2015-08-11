@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { connect } from 'redux/react'
+import { connect } from 'react-redux'
 import { prepareRoute } from '../lib/decorators'
 import { loadApps } from '../actions'
 
@@ -11,11 +11,12 @@ import { loadApps } from '../actions'
 class Apps {
 
   render () {
+    console.log('Apps', this.props)
     const { apps } = this.props
     return (
       <div>
         <ul>
-          {apps.map(appInfo =>
+          {apps && apps.map(appInfo =>
             <li key={appInfo.name}>
               <Link to={`/apps/${appInfo.name}`}>
                 {appInfo.name}

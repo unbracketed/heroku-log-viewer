@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { connect } from 'redux/react'
+import { connect } from 'react-redux'
 import { prepareRoute } from '../../lib/decorators'
 import { loadGroup } from '../../actions'
 
